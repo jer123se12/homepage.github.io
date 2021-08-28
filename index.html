@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="styles.css">
+    <title>Homepage</title>
+    <script src="script.js"></script>
+    
+</head>
+<body onload="load()">
+    <div class="box" onclick="document.getElementById('searchbar').focus()"><div id="searchbar"class="txt"contenteditable="true"></div></div>
+    <div id="wholething">
+        <div id="topfew"class="inv">
+            <div class="box button" onclick="window.location='https://github.com';">
+                <div class="txt">
+                    Github
+                </div>
+            </div>
+            <div class="box button"onclick="window.location='https://classroom.google.com/u/0/h';">
+                <div class="txt">
+                    Classroom
+                </div>
+            </div>
+        </div>
+        <div id="bottomfew"class="inv">
+            <div class="box" >
+                <div class="inv">
+                    <p>Spotify:</p>
+                    <div class="box" style="margin:5px;padding:0px" onclick="play()">
+                        <div class="box button" style="background-color:#777;margin:0px;margin-right: 10px;" onclick="play()">
+                            <div class="txt" >Play</div>
+                        </div>
+                        <div class="box button" style="background-color:#777;margin:0px" onclick="pause()">
+                            <div class="txt" >Pause</div>
+                        </div>
+                    </div>
+                    
+                    <div class="box button inv" style="background-color:#777;margin:5px" onclick="play('6n4Ca1l5lxZMXZMaix4A1g')">
+                        <div class="txt" >日本語</div>
+                        
+                    </div>
+                    <div class="box button inv" style="background-color:#777;margin:5px" onclick="play('6ncRNuajCHqQng4VIHIRYr')">
+                        <div class="txt">きくお</div>
+                        
+                    </div>
+                    <div class="box button inv" style="background-color:#777;margin:5px"onclick="play('7HgxLUQo5Z1aVVT1QEkfen')" >
+                        <div class="txt">ツユ</div>
+                        
+                    </div>
+                    <div class="box button inv" style="background-color:#777;margin:5px"onclick="play('10bvKApaLascDhkERLahH2')">
+                        <div class="txt">Electric</div>
+                        
+                    </div>
+                    <div class="box button inv" style="background-color:#777;margin:5px"onclick="play('73g5LfXxqHdonv0KYUI1jR')">
+                        <div class="txt">Camellia</div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+  <script>
+      function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+        }
+    window.onSpotifyWebPlaybackSDKReady = () => {
+      const token = getCookie("accesstoken");
+      const player = new Spotify.Player({
+        name: 'web player',
+        getOAuthToken: cb => { cb(token); }
+      });
+
+      // Error handling
+      player.addListener('initialization_error', ({ message }) => { console.error(message); });
+      player.addListener('authentication_error', ({ message }) => { console.error(message); });
+      player.addListener('account_error', ({ message }) => { console.error(message); });
+      player.addListener('playback_error', ({ message }) => { console.error(message); });
+
+      // Playback status updates
+      player.addListener('player_state_changed', state => { console.log(state); });
+
+      // Ready
+      player.addListener('ready', ({ device_id }) => {
+        console.log('Ready with Device ID', device_id);
+        document.cookie="device_id="+device_id+";"
+      });
+
+      // Not Ready
+      player.addListener('not_ready', ({ device_id }) => {
+        console.log('Device ID has gone offline', device_id);
+        document.cookie="device_id=;"
+      });
+      
+      // Connect to the player!
+      player.connect();
+      player.setVolume(1).then(() => {
+        console.log('Volume updated!');
+        });
+    };
+  </script>
+</body>
+</html>

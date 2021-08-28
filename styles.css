@@ -1,0 +1,51 @@
+@font-face {
+    font-family: MYFONT;
+    src: url("Kyokasho.ttf") format('truetype') ;
+  }
+body{
+    background-color: #000;
+    font-family: MYFONT;
+    color: #fff;
+    font-size:1rem;
+    
+}
+#wholething{
+    display:flex;
+    flex-direction:row;
+    text-align:center;
+    width:auto;
+    height:auto;
+}
+.inv{
+    flex-grow: 1;
+    margin:5px;
+    padding: 5px;
+    display:flex;
+    flex-direction:column;
+}
+.box{
+    flex-grow: 1;
+    border-radius: 20px;
+    margin:10px 0px;
+    padding: 20px;
+    background-color:#333;
+    display:flex;
+    transition:all 0.2s
+}
+.button:hover{
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+    cursor: pointer;
+}
+.txt{
+    margin:auto;
+    padding: auto;
+    vertical-align: middle;
+}
+#controls{
+    position:fixed;
+    bottom:0px;
+    left:0px;
+    width:fit-content;
+    height:fit-content;
+}
