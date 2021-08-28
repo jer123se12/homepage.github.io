@@ -100,6 +100,8 @@ function gettoken(){
           document.cookie='time='+String(timeout)+";"
           document.cookie="accesstoken="+response.access_token+";"
           document.cookie="refresh_token="+response.refresh_token+";"
+        }else{
+            window.location.replace(redirect_uri)
         }
         
     }
