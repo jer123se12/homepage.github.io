@@ -33,7 +33,7 @@ function generatecolors(){
     arr[i]=arr[j]
     arr[j]=temp
   }
-  if (s+v>100){
+  if (v>50){
     arr.push("#000")
   }else{
     arr.push("#fff")
