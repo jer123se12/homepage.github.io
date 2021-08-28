@@ -2,7 +2,17 @@
 function load(){
     document.getElementById("searchbar").focus();
     document.onkeypress = check
-    
+    let colors=generatecolors()
+    document.body.style.backgroundColor=colors[0]
+    document.body.style.color=colors[3]
+    let boxes=document.getElementsByClassName("box")
+    for (var i=0;i<boxes.length;i++){
+      boxes[i].style.backgroundColor=colors[1]
+    }
+    let spoti=document.getElementsByClassName("spoti")
+    for (var i=0;i<spoti.length;i++){
+      spoti[i].style.backgroundColor=colors[2]
+    }
 }
 function check(a){
   if (document.activeElement===document.getElementById("searchbar"))
@@ -11,7 +21,27 @@ function check(a){
         window.location.replace("http://google.com/search?q="+document.getElementById("searchbar").innerHTML)
     }
 }
+function generatecolors(){
+  let s=10+Math.floor(Math.random()*90)
+  let v=10+Math.floor(Math.random()*90)
+  let h=Math.floor(Math.random()*360)
+  var arr=['hsl('+h+","+s+"%,"+v+"%)",'hsl('+((h+120)%360)+","+s+"%,"+v+"%)",'hsl('+((h+240)%360)+","+s+"%,"+v+"%)"]
+  console.log(arr)
+  for (var i=0;i<3;i++){
+    let j=i+Math.floor(Math.random()*(3-i))
+    let temp=arr[i]
+    arr[i]=arr[j]
+    arr[j]=temp
+  }
+  if (s+v>100){
+    arr.push("#000")
+  }else{
+    arr.push("#fff")
+  }
+  console.log(arr)
+  return arr
 
+}
 
 
 
