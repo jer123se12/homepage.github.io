@@ -1,10 +1,7 @@
-@font-face {
-    font-family: MYFONT;
-    src: url("./Kyokasho.ttf") format('truetype') ;
-  }
+
 body{
     background-color: #000;
-    font-family: MYFONT;
+    font-family: 'M PLUS Rounded 1c', sans-serif;;
     color: #fff;
     font-size:1rem;
     
