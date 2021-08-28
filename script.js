@@ -167,7 +167,7 @@ function play(playlistid="None"){
 
 function pause(){
   var xhr = new XMLHttpRequest();
-  xhr.open("PUT", "https://api.spotify.com/v1/me/player/pause"+"?device_id="+getCookie("device_id"), false);
+  xhr.open("PUT", "https://api.spotify.com/v1/me/player/pause", false);
   xhr.setRequestHeader('Authorization',"Bearer "+getCookie("accesstoken"));
   xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
   xhr.send()
