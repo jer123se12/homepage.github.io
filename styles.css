@@ -12,6 +12,7 @@ body{
     text-align:center;
     width:auto;
     height:auto;
+    flex-wrap:wrap;
 }
 .inv{
     flex-grow: 1;
@@ -19,6 +20,7 @@ body{
     padding: 5px;
     display:flex;
     flex-direction:column;
+    flex-wrap:wrap;
 }
 .box{
     justify-content:center;
@@ -28,7 +30,7 @@ body{
     padding: 20px;
     background-color:#333;
     display:flex;
-    transition:all 0.2s
+    transition:all 0.2s;
     flex-wrap:wrap;
 }
 .button:hover{
