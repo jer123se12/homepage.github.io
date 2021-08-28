@@ -1,6 +1,6 @@
 @font-face {
     font-family: MYFONT;
-    src: url("https://jer123se12.github.io/homepage.github.io/Kyokasho.ttf") format('truetype') ;
+    src: url("./Kyokasho.ttf") format('truetype') ;
   }
 body{
     background-color: #000;
