@@ -31,11 +31,13 @@ function check(a){
  //spotify
  const my_client_id="e95367a4d42a49029fb52434dab95dcf"
 var scopes = ['user-modify-playback-state',"streaming", "user-read-email", "user-read-private"].join(" ");
-const redirect_uri="https://jer123se12.github.io/homepage.github.io/"
+const redirect_uri="http://localhost:5500/"//"https://jer123se12.github.io/homepage.github.io/"
 const urlSearchParams = new URLSearchParams(window.location.search);
 const params = Object.fromEntries(urlSearchParams.entries());
 const clientidsecrect="ZTk1MzY3YTRkNDJhNDkwMjlmYjUyNDM0ZGFiOTVkY2Y6MDMxMzQ1Njk5Njc5NDc3Y2E5Y2YyNmMzNmVlYzQ4NDM="
 var response;
+var shuffle=false
+var repeat=false
 document.cookie="device_id=;"
 
 
@@ -164,10 +166,9 @@ function play(playlistid="None"){
   }
   
 }
-
-function pause(){
+function spotify(method,url){
   var xhr = new XMLHttpRequest();
-  xhr.open("PUT", "https://api.spotify.com/v1/me/player/pause", false);
+  xhr.open(method, url, false);
   xhr.setRequestHeader('Authorization',"Bearer "+getCookie("accesstoken"));
   xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
   xhr.send()
@@ -176,8 +177,36 @@ function pause(){
     console.log(res)
     }
 }
+function pause(){
+  spotify("PUT", "https://api.spotify.com/v1/me/player/pause")
+}
+function skip(){
+  spotify("POST", "https://api.spotify.com/v1/me/player/next")
+}
+function prev(){
+  spotify("POST", "https://api.spotify.com/v1/me/player/previous")
+}
+function rp(){
+  if (repeat){
+    repeat=false;
+    document.getElementById("repeat").innerHTML="Repeat"
+  }else{
+    repeat=true;
+    document.getElementById("repeat").innerHTML="No Repeat"
+  }
+  spotify("PUT", "https://api.spotify.com/v1/me/player/repeat?state="+((repeat)?"true":"false"))
+}
 
-
+function shu(){
+  if (repeat){
+    repeat=false;
+    document.getElementById("shuffle").innerHTML="Shuffle"
+  }else{
+    repeat=true;
+    document.getElementById("shuffle").innerHTML="No Shuffle"
+  }
+  spotify("PUT", "https://api.spotify.com/v1/me/player/shuffle?state="+((repeat)?"true":"false"))
+}
 //camellia:       73g5LfXxqHdonv0KYUI1jR
 //Japanese:     6n4Ca1l5lxZMXZMaix4A1g
 //electionic:     10bvKApaLascDhkERLahH2
