@@ -31,7 +31,7 @@ function check(a){
  //spotify
  const my_client_id="e95367a4d42a49029fb52434dab95dcf"
 var scopes = ['user-modify-playback-state',"streaming", "user-read-email", "user-read-private"].join(" ");
-const redirect_uri="http://localhost:5500/"//"https://jer123se12.github.io/homepage.github.io/"
+const redirect_uri="https://jer123se12.github.io/homepage.github.io/"
 const urlSearchParams = new URLSearchParams(window.location.search);
 const params = Object.fromEntries(urlSearchParams.entries());
 const clientidsecrect="ZTk1MzY3YTRkNDJhNDkwMjlmYjUyNDM0ZGFiOTVkY2Y6MDMxMzQ1Njk5Njc5NDc3Y2E5Y2YyNmMzNmVlYzQ4NDM="
