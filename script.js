@@ -244,14 +244,6 @@ function shu(){
 //TUYU:         7HgxLUQo5Z1aVVT1QEkfen
 
 
-console.log(params)
-if (getCookie("accesstoken")==""){
-  gettoken()
-}else {
-  if (getCookie("refresh_token")=="" || getCookie("time")<(new Date().getTime()/1000)){
-    refresht()
-  }
-}
 
 
 
