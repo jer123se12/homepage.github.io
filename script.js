@@ -197,6 +197,13 @@ function play(playlistid="None"){
   
 }
 function spotify(method,url){
+  if (getCookie("accesstoken")==""){
+    gettoken()
+  }else {
+    if (getCookie("refresh_token")=="" || getCookie("time")<(new Date().getTime()/1000)){
+      refresht()
+    }
+  }
   var xhr = new XMLHttpRequest();
   xhr.open(method, url, false);
   xhr.setRequestHeader('Authorization',"Bearer "+getCookie("accesstoken"));
