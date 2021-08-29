@@ -55,3 +55,12 @@ body{
 
     
 }
+#currentlyplaying{
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    bottom:0px;
+    left:0px;
+    width: 100vw;
+    height:fit-content;
+}

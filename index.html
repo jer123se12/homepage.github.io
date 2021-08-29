@@ -45,9 +45,6 @@
                         <div class="box button mc spoti" style="background-color:#777;margin:5px" onclick="shu()">
                             <div class="txt" id="shuffle">Shuffle</div>
                         </div>
-                        <div class="box button mc spoti" style="background-color:#777;margin:5px" onclick="rp()">
-                            <div class="txt" id="repeat" >Repeat</div>
-                        </div>
                     </div>
                     
                     <div class="box button inv spoti" style="background-color:#777;margin:5px" onclick="play('6n4Ca1l5lxZMXZMaix4A1g')">
@@ -74,7 +71,9 @@
             </div>
         </div>
     </div>
-    
+    <div id="currentlyplaying">
+        <div class="txt">Now Playing: <span id="track"></span></div>
+    </div>
 
 
 
@@ -109,7 +108,11 @@
       player.addListener('playback_error', ({ message }) => { console.error(message); });
 
       // Playback status updates
-      player.addListener('player_state_changed', state => { console.log(state); });
+      player.addListener('player_state_changed', state => {
+           console.log(state); 
+           document.getElementById("track").innerHTML=state.track_window.current_track.name;
+        
+        });
 
       // Ready
       player.addListener('ready', ({ device_id }) => {
