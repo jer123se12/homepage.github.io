@@ -4,7 +4,7 @@ function load(){
     document.onkeypress = check
     let colors=generatecolors()
     document.body.style.backgroundColor=colors[0]
-    document.body.style.color=colors[3]
+    document.body.style.color=colors[colors.length - 1]
     let boxes=document.getElementsByClassName("box")
     for (var i=0;i<boxes.length;i++){
       boxes[i].style.backgroundColor=colors[1]
@@ -22,13 +22,21 @@ function check(a){
     }
 }
 function generatecolors(){
-  let s=10+Math.floor(Math.random()*90)
-  let v=10+Math.floor(Math.random()*90)
+  let amt=3+Math.floor(Math.random()*7)
+  let s=50+Math.floor(Math.random()*50)
+  let v=50+Math.floor(Math.random()*50)
   let h=Math.floor(Math.random()*360)
-  var arr=['hsl('+h+","+s+"%,"+v+"%)",'hsl('+((h+120)%360)+","+s+"%,"+v+"%)",'hsl('+((h+240)%360)+","+s+"%,"+v+"%)"]
+  let value=360/amt
+  var arr=[];
+  for (let i=0;i<amt;i++){
+    console.log(i)
+    console.log('hsl('+((h+(i*value))%360)+","+s+"%,"+v+"%)")
+    arr.push('hsl('+((h+(i*value))%360)+","+s+"%,"+v+"%)")
+  }
+  
   console.log(arr)
-  for (var i=0;i<3;i++){
-    let j=i+Math.floor(Math.random()*(3-i))
+  for (var i=0;i<amt;i++){
+    let j=i+Math.floor(Math.random()*(arr.length-i))
     let temp=arr[i]
     arr[i]=arr[j]
     arr[j]=temp
