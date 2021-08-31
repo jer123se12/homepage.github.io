@@ -113,7 +113,7 @@
            console.log(state); 
            document.getElementById("track").innerHTML="| Now Playing: "+state.track_window.current_track.name;
            if (state.track_window.next_tracks.length>0){
-                document.getElementById("next").innerHTML="| Next Track: "+state.track_window.next_tracks+"|"
+                document.getElementById("next").innerHTML="| Next Track: "+state.track_window.next_tracks[0].name+"|"
            }
             
         });
