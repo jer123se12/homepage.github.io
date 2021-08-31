@@ -1,4 +1,4 @@
-
+//Bad code go BRRRRRRR
 function load(){
     document.getElementById("searchbar").focus();
     document.onkeypress = check
@@ -29,8 +29,7 @@ function generatecolors(){
   let value=360/amt
   var arr=[];
   for (let i=0;i<amt;i++){
-    console.log(i)
-    console.log('hsl('+((h+(i*value))%360)+","+s+"%,"+v+"%)")
+    
     arr.push('hsl('+((h+(i*value))%360)+","+s+"%,"+v+"%)")
   }
   
@@ -48,7 +47,6 @@ function generatecolors(){
   }
   console.log(arr)
   return arr
-
 }
 
 
@@ -180,6 +178,9 @@ function play(playlistid="None"){
       refresht()
     }
   }
+  if (getCookie("device_id")==""){
+    window.location.href = window.location.pathname
+  }
   let data={}
   if (playlistid=="None"){
     data={}
@@ -212,6 +213,11 @@ function spotify(method,url){
       refresht()
     }
   }
+
+  if (getCookie("device_id")==""){
+    window.location.href = window.location.pathname
+  }
+  
   var xhr = new XMLHttpRequest();
   xhr.open(method, url, false);
   xhr.setRequestHeader('Authorization',"Bearer "+getCookie("accesstoken"));

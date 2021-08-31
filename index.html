@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="styles.css">
@@ -72,12 +73,12 @@
         </div>
     </div>
     <div id="currentlyplaying">
-        <div class="txt">Now Playing: <span id="track"></span></div>
+        <div class="txt"><span id="track"></span> <span id="next"></span></div>
     </div>
 
 
 
-    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+<script src="https://sdk.scdn.co/spotify-player.js"></script>
   <script>
       function getCookie(cname) {
         let name = cname + "=";
@@ -110,8 +111,11 @@
       // Playback status updates
       player.addListener('player_state_changed', state => {
            console.log(state); 
-           document.getElementById("track").innerHTML=state.track_window.current_track.name;
-        
+           document.getElementById("track").innerHTML="| Now Playing: "+state.track_window.current_track.name;
+           if (state.track_window.next_tracks.length>0){
+                document.getElementById("next").innerHTML="| Next Track: "+state.track_window.next_tracks+"|"
+           }
+            
         });
 
       // Ready
