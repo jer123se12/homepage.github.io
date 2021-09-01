@@ -179,11 +179,12 @@ function play(playlistid="None"){
   }else {
     if (getCookie("refresh_token")=="" || getCookie("time")<(new Date().getTime()/1000)){
       refresht()
+    }else if (getCookie("device_id")==""){
+      window.location.href = window.location.pathname
     }
   }
-  if (getCookie("device_id")==""){
-    window.location.href = window.location.pathname
-  }
+     
+
   let data={}
   if (playlistid=="None"){
     data={}
@@ -214,11 +215,9 @@ function spotify(method,url){
   }else {
     if (getCookie("refresh_token")=="" || getCookie("time")<(new Date().getTime()/1000)){
       refresht()
+    }else if (getCookie("device_id")==""){
+      window.location.href = window.location.pathname
     }
-  }
-
-  if (getCookie("device_id")==""){
-    window.location.href = window.location.pathname
   }
   
   var xhr = new XMLHttpRequest();
