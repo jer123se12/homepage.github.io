@@ -2,7 +2,17 @@
 function load(){
     document.getElementById("searchbar").focus();
     document.onkeypress = check
-    let colors=generatecolors()
+    changecolor()
+}
+function check(a){
+  if (document.activeElement===document.getElementById("searchbar"))
+    if (a.keyCode==13){
+      a.preventDefault()
+        window.location.replace("http://google.com/search?q="+document.getElementById("searchbar").innerHTML)
+    }
+}
+function changecolor(){
+  let colors=generatecolors()
     document.body.style.backgroundColor=colors[0]
     document.body.style.color=colors[colors.length - 1]
     let boxes=document.getElementsByClassName("box")
@@ -12,13 +22,6 @@ function load(){
     let spoti=document.getElementsByClassName("spoti")
     for (var i=0;i<spoti.length;i++){
       spoti[i].style.backgroundColor=colors[2]
-    }
-}
-function check(a){
-  if (document.activeElement===document.getElementById("searchbar"))
-    if (a.keyCode==13){
-      a.preventDefault()
-        window.location.replace("http://google.com/search?q="+document.getElementById("searchbar").innerHTML)
     }
 }
 function generatecolors(){
