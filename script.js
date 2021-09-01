@@ -165,8 +165,6 @@ function refresht(){
   console.log(response)
   if (xhr.status == 200){
     var timeout =( new Date().getTime() / 1000)+response.expires_in;
-    var t = new Date(1970, 0, 1);
-    
     document.cookie='time='+String(timeout)+";"
     document.cookie="accesstoken="+response.access_token+";"
   }
